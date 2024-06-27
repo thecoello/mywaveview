@@ -1,0 +1,15 @@
+<h3>Login</h3>
+
+<form ngForm #loginForm="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
+    <div class="mb-2">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" placeholder="name@partneremail.com" class="form-control" id="email" name="email" [(ngModel)]="loginModel.email" required>
+    </div>
+    <div class="mb-2">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" placeholder="********" class="form-control" id="password" name="password" [(ngModel)]="loginModel.password" required>
+    </div>
+    <button (click)="login(loginForm)" type="submit" class="btn btn-sap rounded-3 mt-4 mb-4 ps-4 pe-4 w-100">Login</button>
+</form>
+
+<p>Not registered yet? <a href="./registration">Register here</a></p>

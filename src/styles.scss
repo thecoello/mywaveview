@@ -1,0 +1,67 @@
+$na: #470075;
+$lac: #e35a00;
+$emea: #08958f;
+$apj: #ffaa00;
+$sap: #00a8e7;
+$white: #ffffff;
+
+a{
+    text-decoration: none;
+    color: $sap;
+}
+
+.na-color{
+    color: $na;
+}
+
+.lac-color{
+    color: $lac;
+}
+
+.emea-color{
+    color: $emea;
+}
+
+.apj-color{
+    color: $apj;
+}
+
+.sap-color{
+    color: $sap;
+}
+
+.images-thumbs-home{
+    img{
+        height: 30vh;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.images-banner{
+    img{
+        height: 40vh;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.btn-sap{
+   background-color: $sap;
+   color: $white;
+}
+
+.btn-sap:hover{
+    background-color: $sap;
+    color: $white;
+ }
+ 
+
+.navbar-brand{
+    .logos{
+        width: 100%;
+        object-fit: cover;
+        height: 5vh;
+    }
+}
+

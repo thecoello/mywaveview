@@ -3,44 +3,59 @@
     <div class="col-6 p-2 mt-4">
         <div class="card rounded-5">
             <div class="card-body p-5">
-                <h3 class="mb-2">New contract</h3>
+                <h3 class="mb-2">Add your points</h3>
 
-                <form ngForm #registrationForm="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
+                <form *ngIf="!loading" ngForm #registrationForm="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
                     <div class="mb-2">
-                        <label for="clientname" class="form-label">Client name</label>
-                        <input type="text" placeholder="Company" class="form-control" name="clientname" id="clientname"
-                            aria-describedby="clientname" [(ngModel)]="contractModel.clientName" required>
+                        <label for="customername" class="form-label">Customer name *</label>
+                        <input type="text" placeholder="Company" class="form-control" name="customername" id="customername"
+                            aria-describedby="customername" [(ngModel)]="contractModel.customername" required>
                     </div>
 
                     <div class="mb-2">
-                        <label for="country" class="form-label">Country</label>
+                        <label for="country" class="form-label">Country *</label>
                         <select class="form-select" name="country" [(ngModel)]="contractModel.country" required>
-                            <option value="" disabled selected>Select your country</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="" disabled>Select Counntry</option>
+                            <option *ngFor="let country of countries" value="{{country | uppercase}}">{{country | titlecase}}</option>
                         </select>
                     </div>
 
                     <div class="mb-2">
-                        <label for="clientType" class="form-label">Client type</label>
-                        <select class="form-select" name="clientType" [(ngModel)]="contractModel.clientType" required>
+                        <label for="saletype" class="form-label">Sale type *</label>
+                        <select class="form-select" name="saletype" [(ngModel)]="contractModel.saletype" required>
                             <option value="" disabled selected>Select your country</option>
-                            <option value="Current client">Current client</option>
-                            <option value="New client">New client</option>
+                            <option value="Internal promo">Internal promo</option>
+                            <option value="Net New Sale">Net New Sale</option>
+                            <option value="Existing Customer Sale">Existing Customer Sale </option>
                         </select>
                     </div>
 
+                    <hr>
+
                     <div class="mb-2">
-                        <label for="file" class="form-label">Contract File</label>
-                        <input type="file" placeholder="Company" class="form-control" name="file" id="file"
-                            aria-describedby="file" [(ngModel)]="contractModel.file" required>
+                        <label for="file" class="form-label m-0 p-0">Upload sales contract with MyWave *</label>
+                        <div id="emailHelp" class="form-text  m-0 p-0 pb-2">PDF or image (JPG, JPEG) - Max file size: 2MB</div>
+
+                        <input (change)="getContract($event)" type="file" placeholder="Company" class="form-control" name="file" id="file"
+                            aria-describedby="file" required>
+                    </div>
+
+                    <div *ngIf="errorMessage?.length! > 0">
+                        <div *ngFor="let message of errorMessage" class="alert alert-danger" role="alert">
+                            {{message}}
+                        </div>
                     </div>
 
 
                     <button (click)="contract(registrationForm)" type="submit"
                         class="btn btn-sap rounded-3 mt-4 mb-4 ps-4 pe-4 w-100">Add contract</button>
                 </form>
+
+                <div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+                    <div class="spinner-grow text-secondary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                </div>
                 
             </div>
         </div>

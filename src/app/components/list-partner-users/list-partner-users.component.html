@@ -1,1 +1,39 @@
-<p>list-partner-users works!</p>
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6 p-2 mt-4">
+    <h3>Users</h3>
+
+    <div *ngFor="let user of users">
+
+      <div class="card mt-2 mb-2">
+        <div class="card-body">
+          <div class="row d-flex align-items-center">
+            <div class="col-5">
+              <p class="m-0"><b>{{user.companyname | titlecase}}</b></p>
+              <p class="m-0">{{user.name | titlecase}}</p>
+              <p class="m-0">  {{user.email | lowercase}}</p>
+            </div>
+
+            <div class="col-3">
+              <p class="m-0"><b>{{user.country | titlecase}}</b></p>
+              <p class="m-0">{{user.region | uppercase }}</p>
+            </div>
+
+            <div class="col-4">
+              <a type="button" class="btn btn-primary" href="./admin/contracts/{{user.id}}">View points</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <nav class="mt-4">
+      <ul class="pagination">
+        <li class="page-item" *ngFor="let page of pagination"><a (click)="getUsers(page.url)" class="page-link {{page.active ? 'active' : null }} {{!page.url ? 'disabled' : null}}" [innerHTML]="page.label"></a></li>
+      </ul>
+    </nav>
+    
+  </div>
+  <div class="col-3"></div>
+</div>

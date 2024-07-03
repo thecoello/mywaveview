@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6 p-2 mt-4">
+    <ul class="nav nav-pills mb-4">
+      <li class="nav-item">
+        <a (click)="showContracts()" class="nav-link {{contracts ? 'active' : null}}">Contracts</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="showAditionalPoints()" class="nav-link {{aditionalPoints ? 'active' : null}}">Aditional Points</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="showViewPoints()" class="nav-link {{viewPoints ? 'active' : null}}">View Points</a>
+      </li>
+    </ul>
+    <app-list-contracts *ngIf="contracts" [urlParam]="urlParam"></app-list-contracts>
+    <app-aditional-points *ngIf="aditionalPoints" ></app-aditional-points>
+    <app-region-table *ngIf="viewPoints" [urlParam]="'getpoints/'+urlParam"></app-region-table>
+  </div>
+  <div class="col-3"></div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,5 +9,4 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
-
 }

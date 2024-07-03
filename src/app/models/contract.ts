@@ -1,6 +1,8 @@
 export default class Contract{
-    clientName?:string
+    customername?:string
     country?:string
-    clientType?:string
-    file?:string
+    saletype?:string
+    file?:File
+    points?:number
+    user_id?:number
 }

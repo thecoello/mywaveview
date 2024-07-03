@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 $na: #470075;
 $lac: #e35a00;
 $emea: #08958f;
@@ -5,10 +7,35 @@ $apj: #ffaa00;
 $sap: #00a8e7;
 $white: #ffffff;
 
+.nav-link, .page-link{
+    cursor: pointer;;
+}
+
 a{
     text-decoration: none;
     color: $sap;
 }
+
+.na-bg{
+    background: $na;
+}
+
+.lac-bg{
+    background: $lac;
+}
+
+.emea-bg{
+    background: $emea;
+}
+
+.apj-bg{
+    background: $apj;
+}
+
+.sap-bg{
+    background: $sap;
+}
+
 
 .na-color{
     color: $na;
@@ -60,8 +87,7 @@ a{
 .navbar-brand{
     .logos{
         width: 100%;
-        object-fit: cover;
-        height: 5vh;
+        height: auto
     }
 }
 

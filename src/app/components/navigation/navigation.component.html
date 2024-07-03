@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-body-light">
     <div class="container-fluid">
-        <div class="row w-100 pt-4">
+        <div class="row w-100 pt-4 d-flex align-items-center">
             <div class="col-2">
-                <a class="navbar-brand" href="#">
-                    <img src="../../../assets/images/SBO-logo.png" alt="Logo SAP BUSINESS ONE"
+                <a class="navbar-brand" routerLink="#">
+                    <img src="./assets/images/SBO-logo.png" alt="Logo SAP BUSINESS ONE"
                         class="d-inline-block align-text-top logos">
                 </a>
             </div>
@@ -11,34 +11,37 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="">Home</a>
+                            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" routerLink="./admin/users">Users</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                                Regions points series
+                                Regional Series Leaderboards
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#">NORTH AMERICA</a>
-                                    <a class="dropdown-item" href="#">LAC</a>
-                                    <a class="dropdown-item" href="#">EMEA</a>
-                                    <a class="dropdown-item" href="#">APJ</a>
+                                    <a class="dropdown-item" href="scores?region=NA">NORTH AMERICA</a>
+                                    <a class="dropdown-item" href="scores?region=LAC">LAC</a>
+                                    <a class="dropdown-item" href="scores?region=EMEA">EMEA</a>
+                                    <a class="dropdown-item" href="scores?region=APJ">APJ</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-success rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true" href="newcontract">Add new contract</a>
-                            <a class="btn btn-sap rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true" href="registration">Register now</a>
-                            <a class="btn btn-outline-secondary rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true" href="login">Login</a>
+                            <a class="btn btn-success rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true" routerLink="./newcontract">Add your points</a>
+                            <a class="btn btn-sap rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true" routerLink="registration">Register now</a>
+                            <a class="btn btn-outline-secondary rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true" routerLink="login">Login</a>
                         </li>
                     </ul>
 
                 </div>
             </div>
             <div class="col-2">
-                <a class="navbar-brand" href="#">
-                    <img src="../../../assets/images/mywave-logo.png" alt="Logo SAP BUSINESS ONE"
+                <a class="navbar-brand" routerLink="#">
+                    <img src="./assets/images/mywave-logo.png" alt="Logo SAP BUSINESS ONE"
                         class="d-inline-block align-text-top logos">
                 </a>
             </div>

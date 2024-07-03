@@ -1,1 +1,33 @@
-<p>region-table works!</p>
+<table class="table table-striped-columns table-striped-columns">
+  <thead>
+    <tr class="text-center">
+      <th scope="col"><b>#</b></th>
+      <th scope="col">Partner</th>
+      <th scope="col">Region</th>
+      <th scope="col">IP</th>
+      <th scope="col">NNS</th>
+      <th scope="col">EXS</th>
+      <th scope="col">AP</th>
+      <th scope="col"><b>Total</b></th>
+    </tr>
+  </thead>
+
+  <tbody *ngFor="let infoPoints of pointsModel; index as i">
+    <tr class="text-center">
+      <td>{{i+1}}</td>
+      <td>{{infoPoints.companyname}}</td>
+      <td class="m-0 p-0"><b class="text-white d-block w-100 p-2
+      {{infoPoints.region == 'NA'? 'na-bg' : null}}
+      {{infoPoints.region == 'LAC'? 'lac-bg' : null}}
+      {{infoPoints.region == 'EMEA'? 'emea-bg' : null}}
+      {{infoPoints.region == 'APJ'? 'apj-bg' : null}}
+      ">{{infoPoints.region}}</b></td>
+      <td>{{infoPoints.internal_promo}}</td>
+      <td>{{infoPoints.net_new_sale}}</td>
+      <td>{{infoPoints.existing_customer_sale}}</td>
+      <td>{{infoPoints.aditional_points}}</td>
+      <td class="m-0 p-0"><b class="text-white d-block w-100 sap-bg p-2">{{infoPoints.total}}</b></td>
+    </tr>
+  </tbody>
+
+</table>

@@ -1,7 +1,30 @@
+<div class="row pt-4 pb-4">
+  <div class="col-12 text-center">
+
+      <div class="images-banner-points mt-4 mb-4">
+
+        <p *ngIf="region == 'GLOBAL'" ><b class="sap-color">The Road to the World Series</b></p>
+        <p *ngIf="region == 'NA'" ><b class="na-color">NORTH AMERICA SERIES</b> | Maui - Hawaii (USA)</p>
+        <p *ngIf="region == 'LAC'" ><b class="lac-color">LAC SERIES</b> | Punta de Lobos - Chile</p>
+        <p *ngIf="region == 'EMEA'" ><b class="emea-color">EMEA SERIES</b> | Peniche - Portugal</p>
+        <p *ngIf="region == 'APJ'" ><b class="apj-color">APJ SERIES</b> | Kuta Beach - Bali (Indonesia)</p>
+  
+
+          <img *ngIf="region == 'GLOBAL'" src="./assets/images/banner-home.jpg" alt="">
+          <img *ngIf="region == 'NA'" src="./assets/images/Maui-min.jpeg" alt="">
+          <img *ngIf="region == 'LAC'" src="./assets/images/Punta-de-loos-min.jpeg" alt="">
+          <img *ngIf="region == 'EMEA'" src="./assets/images/Peniche-min.jpeg" alt="">
+          <img *ngIf="region == 'APJ'" src="./assets/images/Bali-min.jpeg" alt="">
+      </div>
+      
+
+  </div>
+</div>
+
+
 <div class="row">
   <div class="col-3"></div>
   <div class="col-6">
-    <h3 class="mb-2">{{title}}</h3>
     <app-region-table [urlParam]="url"></app-region-table>
   </div>
   <div class="col-3"></div>

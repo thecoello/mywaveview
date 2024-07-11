@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
@@ -10,5 +10,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'mywave-competition';
+
+  title = 'GenAI Surfing Regional Series';
+
 }

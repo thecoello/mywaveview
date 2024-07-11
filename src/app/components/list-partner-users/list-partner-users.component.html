@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="col-3"></div>
-  <div class="col-6 p-2 mt-4">
+<div class="row mobile-row">
+  <div class="col-3 mobile-width"></div>
+  <div class="col-6 p-2 mt-4 mobile-width">
     <h3>Users</h3>
 
     <div *ngFor="let user of users">
@@ -20,7 +20,7 @@
             </div>
 
             <div class="col-4">
-              <a type="button" class="btn btn-primary" href="./admin/contracts/{{user.id}}">View points</a>
+              <a type="button" class="btn btn-primary" routerLink="/admin/contracts/{{user.id}}">View points</a>
             </div>
           </div>
         </div>
@@ -35,5 +35,5 @@
     </nav>
     
   </div>
-  <div class="col-3"></div>
+  <div class="col-3 mobile-width"></div>
 </div>

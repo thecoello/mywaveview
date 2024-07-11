@@ -1,0 +1,68 @@
+<div class="row mobile-row">
+  <div class="col-3 mobile-width"></div>
+  <div class="col-6 p-2 mt-4 mobile-width">
+      <div class="card rounded-5">
+          <div class="card-body p-5">
+            <h3 class="mb-2">Register New Admin</h3>
+
+            <form *ngIf="!loading" ngForm #registrationForm="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
+            
+                <hr class="mb-4 mt-4 text-body-secondary">
+            
+                <div class="mb-2 mt-2">
+                    <label for="name" class="form-label">Name *</label>
+                    <input type="text" placeholder="Admin name" class="form-control" name="name" id="name"
+                        [(ngModel)]="registrationModel.name" required>
+                </div>
+            
+                <hr class="mb-4 mt-4 text-body-secondary">
+            
+                <div class="mb-2 mt-2">
+                    <label for="email" class="form-label">Email address *</label>
+                    <input type="email" placeholder="name@partneremail.com" class="form-control" name="email" id="email"
+                        aria-describedby="email" [(ngModel)]="registrationModel.email" required>
+                </div>
+                <div class="mb-2">
+                    <label for="password" class="form-label">Password *</label>
+                    <input type="password" placeholder="********" class="form-control" id="password" name="password"
+                        [(ngModel)]="registrationModel.password" required>
+                        <div id="password" class="form-text">
+                            -Must contain at least 6 alphanumeric characters <br>
+                            -At least one capital letter and one small letter are required.
+                        </div>
+                </div>
+                <div class="mb-2">
+                    <label for="passwordrepeat" class="form-label">Repeat Password *</label>
+                    <input type="password" placeholder="********" class="form-control" id="passwordrepeat" name="passwordrepeat"
+                        [(ngModel)]="registrationModel.passwordrepeat" required>
+                </div>
+            
+                <div *ngIf="passwordValidated" class="alert alert-danger" role="alert">
+                    Passwords should be the same
+                </div>
+            
+                <div *ngIf="errorMessage?.length! > 0">
+                    <div *ngFor="let message of errorMessage" class="alert alert-danger" role="alert">
+                        {{message}}
+                    </div>
+                </div>
+                
+            
+                <button (click)="registration(registrationForm)" type="submit"
+                    class="btn btn-sap rounded-3 mt-4 mb-4 ps-4 pe-4 w-100">Register</button>
+            </form>
+            
+            <div *ngIf="registered"  class="alert alert-success" role="alert">
+                Registration completed
+            </div>
+            
+            <div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+                <div class="spinner-grow text-secondary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+            </div>
+          </div>
+      </div>        
+  </div>
+  <div class="col-3 mobile-width"></div>
+</div>

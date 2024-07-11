@@ -15,16 +15,36 @@ import { Router, RouterLink } from '@angular/router';
 export class ListPartnerUsersComponent implements OnInit {
 
   users?:Array<User>
+  user?:User
   errorMessage?:Array<string>
   loading: boolean = false
   pagination?:Array<any>
-  url:string = "http://127.0.0.1:8000/users"
+  url:string = "http://127.0.0.1:8000/api/users"
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private router:Router){}
 
   ngOnInit(): void {
-    this.getUsers(this.url)
+    const id = localStorage.getItem('user_id')
+    console.log(id)
+    if(id){
+      this.getUser(id!)
+    }else{
+      this.router.navigate(['/'])
+    }
   }  
+
+  getUser(id: string){
+    this.userService.getUser(id).subscribe({
+      next: (response)=>{
+        this.user = response
+        if(this.user.usertype == "ADMIN"){
+          this.getUsers(this.url)
+        }else{
+          this.router.navigate(['/'])
+        }
+      }
+    })
+  }
 
   getUsers(url:string){
     this.userService.getUsers(url).subscribe({
@@ -33,10 +53,8 @@ export class ListPartnerUsersComponent implements OnInit {
         this.pagination = response.links
       },
       error: (error) => {
-        for (const key in error.error) {
-          error.error[key].forEach((message:string) => {
-            this.errorMessage!.push(message)
-          });
+        if(error.status == 403){
+          this.router.navigate(['/'])
         }
         this.loading = false;
       }

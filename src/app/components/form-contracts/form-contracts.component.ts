@@ -5,6 +5,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { ContractService } from '../../services/contract';
 import Country from '../../packages/country';
 import { NgFor, NgIf, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-contracts',
@@ -23,10 +24,10 @@ export class FormContractsComponent implements OnInit {
   contractCreated: boolean = false
   contractFD: FormData = new FormData()
 
-  constructor(private contractservice: ContractService) { }
+  constructor(private contractservice: ContractService, private router: Router) { }
 
   ngOnInit(): void {
-    this.contractModel.user_id = 1
+    this.contractModel.user_id = parseInt(localStorage.getItem('user_id')!)
   }
 
   private submit(contract: FormData) {
@@ -39,7 +40,7 @@ export class FormContractsComponent implements OnInit {
         next: (response) => {
           this.contractCreated = true
           setTimeout(() => {
-            window.location.href = './login'
+            this.router.navigate(['./points'])
           }, 1500);
         },
         error: (error) => {

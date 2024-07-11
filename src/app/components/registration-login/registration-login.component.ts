@@ -3,6 +3,7 @@ import { RegistrationComponent } from '../registration/registration.component';
 import { LoginComponent } from '../login/login.component';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { UserService } from '../../services/users';
 
 @Component({
   selector: 'app-registration-login',
@@ -21,6 +22,10 @@ export class RegistrationLoginComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    if(localStorage.getItem('user_id') && localStorage.getItem('token')){
+      this.router.navigate(['/'])
+    }
     
     if(this.router.url?.includes('login')){
       this.login = true

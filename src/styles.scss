@@ -73,6 +73,20 @@ a{
     }
 }
 
+.images-banner-points{
+    @extend .images-banner;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    p{  
+        margin: 1rem;
+        background: #ffffff;
+        padding: 2rem;
+        position: absolute;
+        font-size: 1.5rem;
+    }
+}
+
 .btn-sap{
    background-color: $sap;
    color: $white;
@@ -82,12 +96,34 @@ a{
     background-color: $sap;
     color: $white;
  }
+
+ .dropdown-item{
+    cursor: pointer;
+ }
  
 
 .navbar-brand{
+    display: block;
+    margin: 0 auto;
     .logos{
-        width: 100%;
-        height: auto
+        width: auto;
+        height: 7vh
     }
 }
 
+
+
+@media only screen and (max-width: 1050px) {
+
+    .mobile-row{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .mobile-width{
+        margin-bottom: 0.2rem;
+        width: 100%;
+    }
+
+   
+  }

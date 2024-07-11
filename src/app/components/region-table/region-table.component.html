@@ -13,7 +13,7 @@
   </thead>
 
   <tbody *ngFor="let infoPoints of pointsModel; index as i">
-    <tr class="text-center">
+    <tr *ngIf="infoPoints.total! > 0" class="text-center">
       <td>{{i+1}}</td>
       <td>{{infoPoints.companyname}}</td>
       <td class="m-0 p-0"><b class="text-white d-block w-100 p-2

@@ -1,0 +1,22 @@
+<form *ngIf="!loading" ngForm #loginForm="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
+  <div class="row">
+    <div class="col-8">
+        <input type="number" placeholder="Type here the aditional points" class="form-control" id="points" name="points" [(ngModel)]="aditionaPModel.points" required>
+    </div>
+    <div class="col-4">
+      <button (click)="submit(loginForm)" type="submit" class="btn btn-sap rounded-3 w-100">Add points</button>
+    </div>
+  </div>
+</form> 
+
+<div *ngIf="errorMessage?.length! > 0">
+  <div *ngFor="let message of errorMessage" class="alert alert-danger" role="alert">
+      {{message}}
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+  <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>

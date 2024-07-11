@@ -1,4 +1,5 @@
 export default class Contract{
+    id?:string
     customername?:string
     country?:string
     saletype?:string

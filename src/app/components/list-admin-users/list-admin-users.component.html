@@ -1,0 +1,37 @@
+<div class="row mobile-row">
+  <div class="col-3 mobile-width mobile-width"></div>
+  <div class="col-6 p-2 mt-4 mobile-width">
+    <h3>Admin Users</h3>
+
+    <div *ngFor="let user of users">
+
+      <div class="card mt-2 mb-2">
+        <div class="card-body">
+          <div class="row d-flex align-items-center">
+            <div class="col-6">
+              <p class="m-0"><b>{{user.name | titlecase}}</b></p>
+              <p class="m-0">{{user.email | lowercase}}</p>
+            </div>
+
+            <div class="col-3">
+  
+            </div>
+
+            <div class="col-3">
+              <a type="button" class="btn btn-primary" routerLink="/admin/edituseradmin/{{user.id}}">Edit user</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <nav class="mt-4">
+      <ul class="pagination">
+        <li class="page-item" *ngFor="let page of pagination"><a (click)="getUsers(page.url)" class="page-link {{page.active ? 'active' : null }} {{!page.url ? 'disabled' : null}}" [innerHTML]="page.label"></a></li>
+      </ul>
+    </nav>
+    
+  </div>
+  <div class="col-3 mobile-width mobile-width"></div>
+</div>

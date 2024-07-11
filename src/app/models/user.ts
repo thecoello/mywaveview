@@ -7,5 +7,5 @@ export default class User {
     email?:string
     password?:string
     passwordrepeat?:string
-    usertype?:string = "USER"
+    usertype?:string
 }

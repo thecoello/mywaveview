@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ContractService } from '../../services/contract';
 import PointsTable from '../../models/pointstable';
 import { NgFor, NgIf } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-region-table',
@@ -16,20 +16,26 @@ export class RegionTableComponent implements OnInit{
   pointsModel?:Array<PointsTable>
   @Input('urlParam')urlParam?: string
 
-  constructor(private contractService: ContractService, private route:Router) {
+  constructor(private contractService: ContractService) {
    }
 
   ngOnInit(): void {
-    this.getPoints(`http://127.0.0.1:8000/${this.urlParam}`)
+    const localSid = localStorage.getItem('user_id')
+    if(this.urlParam?.includes('getallpointsregion')){
+      this.getPoints(`http://127.0.0.1:8000/api/${this.urlParam}`)
+    }else{
+      if (this.urlParam) {
+        this.getPoints(`http://127.0.0.1:8000/api/getpoints/${this.urlParam}`)
+      }else if (localSid) {
+        this.getPoints(`http://127.0.0.1:8000/api/getpoints/${localSid}`)
+      } 
+    }
   }
 
   getPoints(url: string) {
     this.contractService.getPoints(url).subscribe({
       next: (response) => {
         this.pointsModel = response
-      },
-      error: (error) => {
-        console.log(error)
       }
     })
   }

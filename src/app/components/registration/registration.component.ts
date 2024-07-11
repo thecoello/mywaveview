@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import User from '../../models/user';
 import { ValidatorForm } from '../../packages/validatorForm';
 import { NgFor, NgIf, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import Country from '../../packages/country';
 import { UserService } from '../../services/users';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [FormsModule, NgIf, NgFor, TitleCasePipe, UpperCasePipe],
+  imports: [FormsModule, NgIf, NgFor, TitleCasePipe, UpperCasePipe, RouterLink],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })
@@ -21,10 +22,9 @@ export class RegistrationComponent {
   errorMessage?:Array<string>
   validator: ValidatorForm = new ValidatorForm()
   registered: boolean = false
-
   loading: boolean = false
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private router: Router){}
 
   private submit(user: User){
 
@@ -36,7 +36,7 @@ export class RegistrationComponent {
         next: (response) =>{
           this.registered = true
           setTimeout(() => {
-            window.location.href = './login'
+            this.router.navigate(['./login'])
           }, 1500);
         },
         error: (error) => {
@@ -55,7 +55,7 @@ export class RegistrationComponent {
     if(this.validator.validation(registrationForm) && this.validator.equalValidation(this.registrationModel.password!, this.registrationModel.passwordrepeat!)){
       this.passwordValidated = false
       this.wasValidated = false
-  
+        this.registrationModel.usertype = "USER"
         this.submit(this.registrationModel)
 
     }else{

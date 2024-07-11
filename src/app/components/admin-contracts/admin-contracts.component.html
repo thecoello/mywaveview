@@ -1,7 +1,24 @@
 <div class="row">
   <div class="col-3"></div>
-  <div class="col-6 p-2 mt-4">
-    <ul class="nav nav-pills mb-4">
+  <div class="col-6 mt-0">
+    <div class="card mt-0 mb-0">
+      <div class="card-body">
+        <div class="row d-flex align-items-start">
+          <div class="col-5">
+            <p class="m-0"><b>Company name:</b> {{user?.companyname| titlecase}}</p>
+            <p class="m-0"><b>User: </b>{{user?.name | titlecase}}</p>
+            <p class="m-0"><b>Email: </b>{{user?.email | lowercase}}</p>
+          </div>
+    
+          <div class="col-3">
+            <p class="m-0"><b>Country: </b>{{user?.country | titlecase}}</p>
+            <p class="m-0"><b>Region: </b>{{user?.region | uppercase }}</p>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    <ul class="nav nav-pills mt-4 mb-4">
       <li class="nav-item">
         <a (click)="showContracts()" class="nav-link {{contracts ? 'active' : null}}">Contracts</a>
       </li>
@@ -11,10 +28,15 @@
       <li class="nav-item">
         <a (click)="showViewPoints()" class="nav-link {{viewPoints ? 'active' : null}}">View Points</a>
       </li>
+      <li class="nav-item">
+        <a (click)="showEditUser()" class="nav-link {{editUser ? 'active' : null}}">Edit User</a>
+      </li>
     </ul>
+    <hr>
     <app-list-contracts *ngIf="contracts" [urlParam]="urlParam"></app-list-contracts>
     <app-aditional-points *ngIf="aditionalPoints" ></app-aditional-points>
-    <app-region-table *ngIf="viewPoints" [urlParam]="'getpoints/'+urlParam"></app-region-table>
+    <app-region-table *ngIf="viewPoints" [urlParam]="urlParam"></app-region-table>
+    <app-edit-user  *ngIf="editUser" [urlParam]="urlParam"></app-edit-user>
   </div>
   <div class="col-3"></div>
 </div>

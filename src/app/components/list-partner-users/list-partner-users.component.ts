@@ -4,6 +4,7 @@ import { UserService } from '../../services/users';
 import { LowerCasePipe, NgFor, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { toArray } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-list-partner-users',
@@ -19,13 +20,12 @@ export class ListPartnerUsersComponent implements OnInit {
   errorMessage?:Array<string>
   loading: boolean = false
   pagination?:Array<any>
-  url:string = "http://127.0.0.1:8000/api/users"
+  url:string = environment.apiUrl + "/users"
 
   constructor(private userService: UserService, private router:Router){}
 
   ngOnInit(): void {
     const id = localStorage.getItem('user_id')
-    console.log(id)
     if(id){
       this.getUser(id!)
     }else{

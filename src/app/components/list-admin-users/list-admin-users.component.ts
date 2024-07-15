@@ -4,6 +4,7 @@ import { UserService } from '../../services/users';
 import { LowerCasePipe, NgFor, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { toArray } from 'rxjs';
 import { Router, RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-list-partner-users',
@@ -19,7 +20,7 @@ export class ListAdminUsersComponent implements OnInit {
   errorMessage?:Array<string>
   loading: boolean = false
   pagination?:Array<any>
-  url:string = "http://127.0.0.1:8000/api/adminusers"
+  url:string = environment.apiUrl + "/adminusers"
 
   constructor(private userService: UserService, private router:Router){}
 

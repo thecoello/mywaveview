@@ -1,26 +1,49 @@
-<h3>Recover password</h3>
+<div class="row mobile-row">
+  <div class="col-3 mobile-width"></div>
+  <div class="col-6 p-2 mt-4 mobile-width">
 
-<form *ngIf="!loading" ngForm #passwordR="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
-  <div class="mb-2">
-    <label for="email" class="form-label">Email address</label>
-    <input type="email" placeholder="name@partneremail.com" class="form-control" id="email" name="email"
-      [(ngModel)]="email" required>
+    <div class="card rounded-5">
+      <div class="card-body p-5">
+      <h3>Recover password</h3>
+
+      <form *ngIf="!loading" ngForm #passwordR="ngForm" class="{{wasValidated ? 'was-validated' : 'needs-validation'}}">
+        <div class="mb-2">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" placeholder="name@partneremail.com" class="form-control" id="email" name="email"
+            [(ngModel)]="email" required>
+        </div>
+
+        <button (click)="login(passwordR)" type="submit" class="btn btn-sap rounded-3 mt-4 mb-4 ps-4 pe-4 w-100">Recover
+          password</button>
+      </form>
+
+      <div *ngIf="errorMessage?.length! > 0">
+        <div *ngFor="let message of errorMessage" class="alert alert-danger" role="alert">
+            {{message}}
+        </div>
+    </div>
+    
+
+      <div *ngIf="emailSent"  class="alert alert-success" role="alert">
+        Email sent! remember to check your SPAM / Junk folder if you don't see the email in your Inbox
+    </div>
+
+      <div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="m-0">Not registered yet? <a routerLink="/registration">Register here</a></p>
+          <p class="m-0">-OR-</p>
+          <p class="m-0">Already have an account? <a routerLink="/login">Login here</a></p>
+        </div>
+      </div>
+
+    </div>
   </div>
-
-  <button (click)="login(passwordR)" type="submit"
-    class="btn btn-sap rounded-3 mt-4 mb-4 ps-4 pe-4 w-100">Recover password</button>
-</form>
-
-<div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
-  <div class="spinner-grow text-secondary" role="status">
-    <span class="visually-hidden">Loading...</span>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-12 text-center">
-    <p class="m-0">Not registered yet? <a routerLink="/registration">Register here</a></p>
-    <p>-OR-</p>
-    <p class="m-0">Already have an account? <a routerLink="/login">Login here</a></p>
-  </div>
+  <div class="col-3 mobile-width"></div>
 </div>

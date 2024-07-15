@@ -8,18 +8,18 @@
       <div class="card mt-2 mb-2">
         <div class="card-body">
           <div class="row d-flex align-items-center">
-            <div class="col-5">
+            <div class="col-5 mobile-width-50 text-start">
               <p class="m-0"><b>{{user.companyname | titlecase}}</b></p>
               <p class="m-0">{{user.name | titlecase}}</p>
               <p class="m-0">  {{user.email | lowercase}}</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-3 mobile-width-50 text-start">
               <p class="m-0"><b>{{user.country | titlecase}}</b></p>
               <p class="m-0">{{user.region | uppercase }}</p>
             </div>
 
-            <div class="col-4">
+            <div class="col-4 mobile-width mobile-row">
               <a type="button" class="btn btn-primary" routerLink="/admin/contracts/{{user.id}}">View points</a>
             </div>
           </div>

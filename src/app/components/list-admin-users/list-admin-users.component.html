@@ -7,17 +7,17 @@
 
       <div class="card mt-2 mb-2">
         <div class="card-body">
-          <div class="row d-flex align-items-center">
-            <div class="col-6">
+          <div class="row d-flex align-items-center mobile-row">
+            <div class="col-6 mobile-width">
               <p class="m-0"><b>{{user.name | titlecase}}</b></p>
               <p class="m-0">{{user.email | lowercase}}</p>
             </div>
 
-            <div class="col-3">
+            <div class="col-3 mobile-width">
   
             </div>
 
-            <div class="col-3">
+            <div class="col-3 mobile-width mobile-row">
               <a type="button" class="btn btn-primary" routerLink="/admin/edituseradmin/{{user.id}}">Edit user</a>
             </div>
           </div>

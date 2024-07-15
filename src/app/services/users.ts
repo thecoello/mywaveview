@@ -3,11 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import User from '../models/user';
 import { Observable } from 'rxjs';
 import Login from '../models/login';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
   
-  private url:string = "http://127.0.0.1:8000/api"
+  private url:string = environment.apiUrl
   headers:any = {
     'Authorization' : localStorage.getItem('token'),
     'Accept' : 'application/json',
@@ -41,11 +42,19 @@ export class UserService {
     return this.http.post(`${this.url}/login`,body,{headers: header})
   }
 
-  passwordRecover(email: string):Observable<any>{
-    return this.http.post(`${this.url}/login`,email,)
+  passwordRecover(body: object):Observable<any>{
+    return this.http.post(`${this.url}/passrecover`,body,)
+  }
+
+  consultToken(token: string):Observable<any>{
+    return this.http.get(`${this.url}/consulttoken/${token}`)
   }
 
   logout(){
     return this.http.get(`${this.url}/logout`,{headers: this.headers})
+  }
+
+  changepassword(body: object){
+    return this.http.put(`${this.url}/changepassword`,body)
   }
 }

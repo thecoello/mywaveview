@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-light">
+<nav class="navbar navbar-expand-lg bg-body-light" id="navbardesktop">
     <div class="container-fluid">
         <div class="row w-100 d-flex align-items-center">
             <div class="col-2 d-flex align-items-center">
@@ -8,69 +8,76 @@
                 </a>
             </div>
             <div class="col-8 ">
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end d-flex justify-content-between">
-                       <div class="d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Regional Series Leaderboards
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="scores?region=NA">NORTH AMERICA</a>
-                                    <a class="dropdown-item" href="scores?region=LAC">LAC</a>
-                                    <a class="dropdown-item" href="scores?region=EMEA">EMEA</a>
-                                    <a class="dropdown-item" href="scores?region=APJ">APJ</a>
-                                </li>
-                            </ul>
-                        </li>
-                       </div>
-                       <div class="d-flex">
-                        <li *ngIf="userModel.usertype == 'ADMIN'" class="nav-item">
+                <div class="collapse navbar-collapse ">
+                    <ul
+                        class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end d-flex justify-content-between">
+                        <div class="d-flex">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Regional Series Leaderboards
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="scores?region=NA">NORTH AMERICA</a>
+                                        <a class="dropdown-item" href="scores?region=LAC">LAC</a>
+                                        <a class="dropdown-item" href="scores?region=EMEA">EMEA</a>
+                                        <a class="dropdown-item" href="scores?region=APJ">APJ</a>
+                                        <hr class="m-0 p-0">
+                                        <a class="dropdown-item" href="scores">The Road to the World Series</a>       
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="d-flex">
+                            <li *ngIf="userModel.usertype == 'ADMIN'" class="nav-item">
                                 <a class="nav-link active" aria-current="page" routerLink="/admin/users">Users</a>
                             </li>
                             <li *ngIf="userModel.usertype == 'USER'" class="nav-item">
-                                <a class="nav-link active " aria-current="page" routerLink="/points">Consult your points</a>
+                                <a class="nav-link active " aria-current="page" routerLink="/points">Consult your
+                                    points</a>
                             </li>
-    
+
                             <li *ngIf="userModel.usertype == 'USER'">
                                 <a class="btn btn-success rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true"
                                     routerLink="/newcontract">Add your points</a>
                             </li>
-                          
-    
+
+
                             <li *ngIf="!userModel.usertype" class="nav-item">
                                 <a class="btn btn-sap rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true"
                                     routerLink="registration" [queryParams]="">Register now</a>
                                 <a class="btn btn-outline-secondary rounded-5 ps-4 pe-4 me-2 ms-2" aria-disabled="true"
                                     routerLink="login">Login</a>
                             </li>
-    
+
                             <li *ngIf="userModel.usertype" class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Hi, {{userModel.name}}
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li  *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item" routerLink="/edituser">Edit user</a></li>
-                                    <li *ngIf="userModel.usertype == 'ADMIN'"><hr></li>
-                                    <li *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item" routerLink="/admin/registeradmin">Add new admin</a></li>
-                                    <li *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item" routerLink="/admin/usersadmin">List admin users</a></li>
-                                    <li *ngIf="userModel.usertype == 'ADMIN'"><hr></li>
-                                    <li> <a (click)="logout()" class="dropdown-item">Sign out <i class="bi bi-box-arrow-right"></i></a></li>
+                                    <li *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item"
+                                            routerLink="/edituser">Edit user</a></li>
+                                    <li *ngIf="userModel.usertype == 'ADMIN'">
+                                        <hr>
+                                    </li>
+                                    <li *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item"
+                                            routerLink="/admin/registeradmin">Add new admin</a></li>
+                                    <li *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item"
+                                            routerLink="/admin/usersadmin">List admin users</a></li>
+                                    <li *ngIf="userModel.usertype == 'ADMIN'">
+                                        <hr>
+                                    </li>
+                                    <li> <a (click)="logout()" class="dropdown-item">Sign out <i
+                                                class="bi bi-box-arrow-right"></i></a></li>
                                 </ul>
                             </li>
-    
                         </div>
-
                     </ul>
-
-
-
                 </div>
             </div>
             <div class="col-2 d-flex align-items-center">
@@ -82,3 +89,99 @@
         </div>
     </div>
 </nav>
+
+<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="light">
+    <div class="bg-light p-4">
+        <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-end d-flex flex-column justify-content-between">
+            <div class="d-flex flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <hr class="m-0 p-0">
+
+                <li class="nav-item" *ngIf="userModel.usertype == 'ADMIN'"><a class="nav-link" routerLink="/edituser">Edit
+                        user</a></li>
+                        <hr class="m-0 p-0">
+                <li class="nav-item" *ngIf="userModel.usertype == 'ADMIN'"><a class="nav-link"
+                        routerLink="/admin/registeradmin">Add new admin</a></li>
+                        <hr class="m-0 p-0">
+
+                <li class="nav-item" *ngIf="userModel.usertype == 'ADMIN'"><a class="nav-link"
+                        routerLink="/admin/usersadmin">List admin users</a></li>
+
+                <hr class="m-0 p-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Regional Series Leaderboards
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="scores?region=NA">NORTH AMERICA</a>
+                            <a class="dropdown-item" href="scores?region=LAC">LAC</a>
+                            <a class="dropdown-item" href="scores?region=EMEA">EMEA</a>
+                            <a class="dropdown-item" href="scores?region=APJ">APJ</a>
+                            <hr class="m-0 p-0">
+                            <a class="dropdown-item" href="scores">The Road to the World Series</a>                            
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <hr class="m-0 p-0">
+
+            <div class="d-flex flex-column">
+                
+                <li *ngIf="userModel.usertype == 'USER'" class="nav-item">
+                    <a class="nav-link active " aria-current="page" routerLink="/points">Consult your points</a>
+                </li>
+
+            </div>
+
+            <hr class="m-0 p-0">
+            <li *ngIf="userModel.usertype" class="nav-item">
+                <a (click)="logout()" class="nav-link">Sign out <i class="bi bi-box-arrow-right"></i></a>
+            </li>
+
+        </ul>
+
+    </div>
+</div>
+
+<div id="navbarmobile">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid d-flex w-100">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="navbar-nav pt-2 ps-2 pe-2  justify-content-end d-flex justify-content-between">
+
+                <li *ngIf="userModel.usertype" class="nav-item dropdown">
+                    <p class="m-0 p-0">
+                        Hi, {{userModel.name}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="navbar-nav w-100 p-2 justify-content-end d-flex justify-content-between">
+
+        <li *ngIf="!userModel.usertype" class="nav-item">
+            <a class="btn btn-sap rounded-5 mb-2 ps-4 pe-4 w-100" aria-disabled="true" routerLink="registration"
+                [queryParams]="">Register now</a>
+            <a class="btn btn-outline-secondary rounded-5 ps-4 pe-4 w-100" aria-disabled="true"
+                routerLink="login">Login</a>
+        </li>
+        <li *ngIf="userModel.usertype == 'USER'" class="nav-item">
+            <a class="btn btn-success rounded-5 w-100" routerLink="/newcontract">Add your
+                points</a>
+        </li>
+        <li *ngIf="userModel.usertype == 'ADMIN'" class="nav-item">
+            <a class="btn btn-primary rounded-5 w-100" routerLink="/admin/users">Users points</a>
+        </li>
+    </ul>
+
+
+</div>

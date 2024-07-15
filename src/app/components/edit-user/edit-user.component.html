@@ -20,7 +20,6 @@
     <div *ngIf="userModel.usertype == 'USER'"  class="mb-2">
         <label for="country" class="form-label">Country *</label>
         <select  class="form-select" name="country" [(ngModel)]="userModel.country" required>
-            <option value="" disabled>Select Counntry</option>
             <option *ngFor="let country of countries" value="{{country | uppercase}}">{{country | titlecase}}</option>
         </select>
         
@@ -29,7 +28,6 @@
     <div *ngIf="userModel.usertype == 'USER'"  class="mb-2">
         <label for="region" class="form-label">Region *</label>
         <select class="form-select" name="region" [(ngModel)]="userModel.region" required>
-            <option value="" disabled selected>Select your Region</option>
             <option value="NA">NA</option>
             <option value="LAC">LAC</option>
             <option value="EMEA">EMEA</option>
@@ -69,14 +67,16 @@
             {{message}}
         </div>
     </div>
-    
+
 
     <button (click)="registration(registrationForm)" type="submit"
         class="btn btn-sap rounded-3 mt-4 mb-4 ps-4 pe-4 w-100">Update user</button>
-</form>
 
-<button (click)="deleteUser(userModel.id!)" type="submit"
-class="btn btn-outline-danger rounded-3 ps-4 pe-4 w-100">Delete user</button>
+            
+<a (click)="deleteUser(userModel.id!)"
+class="btn btn-outline-danger rounded-3 ps-4 pe-4 w-100">Delete user</a>
+
+</form>
 
 <div *ngIf="registered"  class="alert alert-success" role="alert">
     User Updated, this page will reload...

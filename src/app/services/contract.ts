@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import Contract from '../models/contract';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ContractService {
   
-  private url:string = "http://127.0.0.1:8000/api"
+  private url:string = environment.apiUrl
   headers:any = {
     'Authorization' : localStorage.getItem('token'),
     'Accept' : 'application/json',

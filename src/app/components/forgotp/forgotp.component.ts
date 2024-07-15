@@ -19,20 +19,31 @@ export class ForgotpComponent {
   validator: ValidatorForm = new ValidatorForm()
   errorMessage?:Array<string>
   loading: boolean = false
+  emailSent:boolean = false
 
   constructor(private userService: UserService, private router: Router){}
 
  login(loginForm: NgForm){
     this.loading = true;
     this.errorMessage = []
+  
 
     if(this.validator.validation(loginForm)){
-      this.userService.passwordRecover(this.email!).subscribe({
-        next: (response) =>{
 
+      const body = 
+        {
+          "email": this.email
+        }
+      
+      this.userService.passwordRecover(body).subscribe({
+        next: (response) =>{
+           if(response){
+            this.emailSent = true
+            this.loading = false
+           }
         },
         error: (error) => {
-          this.errorMessage!.push(error.error)
+          this.errorMessage!.push("This e-mail address is incorrect or does not exist")
           this.email = ""
           this.loading = false;
         }

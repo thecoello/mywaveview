@@ -96,7 +96,7 @@ export class EditUserComponent implements OnInit {
             localStorage.clear()
             window.location.reload()
           }else{
-            this.router.navigate(['/admin/usersadmin'])
+            this.router.navigate(['/'])
           }
         }
       })

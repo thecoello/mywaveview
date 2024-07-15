@@ -7,34 +7,59 @@ import Country from '../../packages/country';
 import { UserService } from '../../services/users';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
+
 @Component({
-  selector: 'app-registration',
+  selector: 'app-passchange',
   standalone: true,
   imports: [FormsModule, NgIf, NgFor, TitleCasePipe, UpperCasePipe, RouterLink],
-  templateUrl: './registration.component.html',
-  styleUrl: './registration.component.scss'
+  templateUrl: './passchange.component.html',
+  styleUrl: './passchange.component.scss'
 })
-export class RegistrationComponent {
-  countries = new Country().countries
-  registrationModel?:User = new User()
+export class PasschangeComponent implements OnInit {
+  token?:string
+  showForm:boolean = false
   wasValidated:boolean = false
   passwordValidated:boolean = false
   errorMessage?:Array<string>
   validator: ValidatorForm = new ValidatorForm()
-  registered: boolean = false
+  passwordchanged: boolean = false
   loading: boolean = false
+  password?:string
+  passwordrepeat?:string
 
-  constructor(private userService: UserService, private router: Router){}
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router){}
 
-  private submit(user: User){
+  ngOnInit(): void {
+
+    const tokenParam = this.route.snapshot.paramMap.get('token')!
+
+
+   if(tokenParam != null){
+      this.userService.consultToken(tokenParam).subscribe({
+        next:(response)=>{
+          if(response){
+            this.showForm = true
+            this.token = response.token!
+          }else{
+            this.router.navigate(['./login'])
+          }
+        },
+        error:(error)=>{
+          this.router.navigate(['./login'])
+        } 
+      })
+    } 
+  }
+
+  private submit(body: object){
 
     this.loading = true;
     this.errorMessage = []
 
     setTimeout(() => {
-      this.userService.createUser(user).subscribe({
+      this.userService.changepassword(body).subscribe({
         next: (response) =>{
-          this.registered = true
+          this.passwordchanged = true
           setTimeout(() => {
             this.router.navigate(['./login'])
           }, 1500);
@@ -52,19 +77,25 @@ export class RegistrationComponent {
   }
 
   registration(registrationForm: NgForm){
-    if(this.validator.validation(registrationForm) && this.validator.equalValidation(this.registrationModel!.password!, this.registrationModel!.passwordrepeat!)){
+    if(this.validator.validation(registrationForm) && this.validator.equalValidation(this.password!, this.passwordrepeat!)){
       this.passwordValidated = false
       this.wasValidated = false
-        this.registrationModel!.usertype = "USER"
-        this.submit(this.registrationModel!)
-
+      const body = 
+      {
+        "password": this.password,
+        "token": this.token
+      }
+    
+        this.submit(body)
     }else{
       this.wasValidated = true
       this.passwordValidated = false
-      if(!this.validator.equalValidation(this.registrationModel!.password!, this.registrationModel!.passwordrepeat!)){
+      if(!this.validator.equalValidation(this.password!, this.passwordrepeat!)){
         this.passwordValidated = true
       }
     }
   }
+
+  
 
 }

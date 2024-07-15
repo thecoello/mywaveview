@@ -1,16 +1,16 @@
 <div class="row">
-  <div class="col-3"></div>
-  <div class="col-6 mt-0">
+  <div class="col-3 mobile-width"></div>
+  <div class="col-6 mt-0 mobile-width">
     <div class="card mt-0 mb-0">
       <div class="card-body">
-        <div class="row d-flex align-items-start">
-          <div class="col-5">
+        <div class="row d-flex align-items-start mobile-row">
+          <div class="col-5 mobile-width">
             <p class="m-0"><b>Company name:</b> {{user?.companyname| titlecase}}</p>
             <p class="m-0"><b>User: </b>{{user?.name | titlecase}}</p>
             <p class="m-0"><b>Email: </b>{{user?.email | lowercase}}</p>
           </div>
     
-          <div class="col-3">
+          <div class="col-3 mobile-width">
             <p class="m-0"><b>Country: </b>{{user?.country | titlecase}}</p>
             <p class="m-0"><b>Region: </b>{{user?.region | uppercase }}</p>
           </div>
@@ -19,16 +19,16 @@
       </div>
     </div>
     <ul class="nav nav-pills mt-4 mb-4">
-      <li class="nav-item">
+      <li class="nav-item mobile-width-50 mobile-row">
         <a (click)="showContracts()" class="nav-link {{contracts ? 'active' : null}}">Contracts</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mobile-width-50">
         <a (click)="showAditionalPoints()" class="nav-link {{aditionalPoints ? 'active' : null}}">Aditional Points</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mobile-width-50">
         <a (click)="showViewPoints()" class="nav-link {{viewPoints ? 'active' : null}}">View Points</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mobile-width-50">
         <a (click)="showEditUser()" class="nav-link {{editUser ? 'active' : null}}">Edit User</a>
       </li>
     </ul>

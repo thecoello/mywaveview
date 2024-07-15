@@ -5,6 +5,7 @@ import { LowerCasePipe, NgFor, NgIf, TitleCasePipe, UpperCasePipe } from '@angul
 import User from '../../models/user';
 import { UserService } from '../../services/users';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-list-contracts',
@@ -19,9 +20,10 @@ export class ListContractsComponent implements OnInit {
   errorMessage?:Array<string>
   loading: boolean = false
   pagination?:Array<any>
-  urlContracts:string = "http://127.0.0.1:8000/contracts"
+  urlContracts:string = environment.apiUrl + "/contracts"
   urlUsers:string = "users"
   @Input('urlParam')urlParam?: string
+  enviromentApiUrl:string = environment.apiUrl
 
   constructor(private contractService: ContractService){}
 

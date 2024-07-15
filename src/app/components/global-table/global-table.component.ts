@@ -28,7 +28,7 @@ export class GlobalTableComponent implements OnInit {
     
     if (!region || region == '') {
       this.region = "GLOBAL"
-      this.url = ""
+      this.url = "getallpoints"
     }
 
     if (region) {
@@ -51,7 +51,7 @@ export class GlobalTableComponent implements OnInit {
 
       else{
         this.region = "GLOBAL"
-        this.url = ""
+        this.url = "getallpoints"
       }
     
     }

@@ -41,11 +41,13 @@ export class NavigationComponent implements OnInit{
       this.userService.logout().subscribe({
         next:()=>{
           localStorage.clear()
-          window.location.reload()
+          this.router.navigateByUrl('/')
+          this.userModel = new User()
         },
         error:()=>{
           localStorage.clear()
           this.router.navigateByUrl('/')
+          this.userModel = new User()
         }
       })     
     }

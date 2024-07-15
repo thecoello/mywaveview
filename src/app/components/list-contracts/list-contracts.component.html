@@ -2,22 +2,22 @@
   <div *ngFor="let contract of contracts">
     <div class="card mt-2 mb-2 border-0">
       <div class="card-body">
-        <div class="row d-flex align-items-center">
-          <div class="col-6">
+        <div class="row d-flex align-items-center mobile-width">
+          <div class="col-4 mobile-row mobile-width">
             <p class="m-0"><b>Customer name</b>{{contract.customername| titlecase}}</p>
             <p class="m-0"><b>Country: </b>{{contract.country | titlecase}} </p>
           </div>
   
-          <div class="col-4">
+          <div class="col-4 mobile-row mobile-width">
             <p class="m-0"><b>Sale type:</b> <br> {{contract.saletype | titlecase}}</p>
             <p class="m-0"><b>Points:</b> {{contract.points}}</p>
           </div>
-  
-          <div class="col-1">
-            <a class="btn btn-outline-success" routerLink="http://127.0.0.1:8000{{contract.file}}" target="_blank"><i class="bi bi-download"></i></a>
+          
+          <div class="col-1 mobile-row mobile-width-50 mt-2 mb-2">
+            <a class="btn btn-outline-success" href="{{enviromentApiUrl}}{{contract.file}}" target="_blank"><i class="bi bi-download"></i></a>
           </div>
   
-          <div class="col-1">
+          <div class="col-1 mobile-row mobile-width-50 mt-2 mb-2">
             <button (click)="removeContract(contract.id!)" type="button" class="btn btn-outline-danger"><i class="bi bi-dash-circle"></i></button>
           </div>
   

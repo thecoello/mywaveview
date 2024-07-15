@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormAditionalPointsComponent } from '../form-aditional-points/form-aditional-points.component';
 import User from '../../models/user';
 import { UserService } from '../../services/users';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-aditional-points',
@@ -23,7 +24,7 @@ export class AditionalPointsComponent implements OnInit {
   wasValidated: boolean = false
   validator: ValidatorForm = new ValidatorForm()
   loading: boolean = false
-  urlPoints: string = "http://127.0.0.1:8000/points"
+  urlPoints: string = environment.apiUrl + "/points"
   userModel: User = new User()
 
   constructor(private aditionalPoints: AditionalPointsService, private route: ActivatedRoute, private userService: UserService) { }

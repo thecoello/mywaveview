@@ -4,7 +4,7 @@
     <div class="mb-2">
         <label for="partnername" class="form-label">Partner name *</label>
         <input type="text" placeholder="Company" class="form-control" name="partnername" id="partnername"
-            aria-describedby="partnername" [(ngModel)]="registrationModel.companyname" required>
+            aria-describedby="partnername" [(ngModel)]="registrationModel!.companyname" required>
     </div>
 
     <hr class="mb-4 mt-4 text-body-secondary">
@@ -12,12 +12,11 @@
     <div class="mb-2 mt-2">
         <label for="name" class="form-label">Your name *</label>
         <input type="text" placeholder="Name" class="form-control" name="name" id="name"
-            [(ngModel)]="registrationModel.name" required>
+            [(ngModel)]="registrationModel!.name" required>
     </div>
     <div class="mb-2">
         <label for="country" class="form-label">Country *</label>
-        <select  class="form-select" name="country" [(ngModel)]="registrationModel.country" required>
-            <option value="" disabled>Select Counntry</option>
+        <select  class="form-select" name="country" [(ngModel)]="registrationModel!.country" required>
             <option *ngFor="let country of countries" value="{{country | uppercase}}">{{country | titlecase}}</option>
         </select>
         
@@ -25,8 +24,7 @@
     </div> 
     <div class="mb-2">
         <label for="region" class="form-label">Region *</label>
-        <select class="form-select" name="region" [(ngModel)]="registrationModel.region" required>
-            <option value="" disabled selected>Select your Region</option>
+        <select class="form-select" name="region" [(ngModel)]="registrationModel!.region" required>
             <option value="NA">NA</option>
             <option value="LAC">LAC</option>
             <option value="EMEA">EMEA</option>
@@ -40,12 +38,12 @@
     <div class="mb-2 mt-2">
         <label for="email" class="form-label">Email address *</label>
         <input type="email" placeholder="name@partneremail.com" class="form-control" name="email" id="email"
-            aria-describedby="email" [(ngModel)]="registrationModel.email" required>
+            aria-describedby="email" [(ngModel)]="registrationModel!.email" required>
     </div>
     <div class="mb-2">
         <label for="password" class="form-label">Password *</label>
         <input type="password" placeholder="********" class="form-control" id="password" name="password"
-            [(ngModel)]="registrationModel.password" required>
+            [(ngModel)]="registrationModel!.password" required>
             <div id="password" class="form-text">
                 -Must contain at least 6 alphanumeric characters <br>
                 -At least one capital letter and one small letter are required.
@@ -54,7 +52,7 @@
     <div class="mb-2">
         <label for="passwordrepeat" class="form-label">Repeat Password *</label>
         <input type="password" placeholder="********" class="form-control" id="passwordrepeat" name="passwordrepeat"
-            [(ngModel)]="registrationModel.passwordrepeat" required>
+            [(ngModel)]="registrationModel!.passwordrepeat" required>
     </div>
 
     <div *ngIf="passwordValidated" class="alert alert-danger" role="alert">

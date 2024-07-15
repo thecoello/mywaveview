@@ -15,16 +15,14 @@
                     <div class="mb-2">
                         <label for="country" class="form-label">Country *</label>
                         <select class="form-select" name="country" [(ngModel)]="contractModel.country" required>
-                            <option value="" disabled>Select Counntry</option>
-                            <option *ngFor="let country of countries" value="{{country | uppercase}}">{{country | titlecase}}</option>
+                                            <option *ngFor="let country of countries" value="{{country | uppercase}}">{{country | titlecase}}</option>
                         </select>
                     </div>
 
                     <div class="mb-2">
                         <label for="saletype" class="form-label">Sale type *</label>
                         <select class="form-select" name="saletype" [(ngModel)]="contractModel.saletype" required>
-                            <option value="" disabled selected>Select your country</option>
-                            <option value="Internal promo">Internal promo</option>
+                                            <option value="Internal promo">Internal promo</option>
                             <option value="Net New Sale">Net New Sale</option>
                             <option value="Existing Customer Sale">Existing Customer Sale </option>
                         </select>

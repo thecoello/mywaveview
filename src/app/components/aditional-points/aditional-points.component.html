@@ -4,16 +4,16 @@
 <div *ngFor="let points of aditionaPModelArr">
   <div class="card mt-0 mb-0 border-0">
     <div class="card-body">
-      <div class="row d-flex align-items-center">
-        <div class="col-4">
+      <div class="row d-flex align-items-center mobile-row ">
+        <div class="col-4 mobile-width">
           <p class="m-0"><b>Points: </b>{{points.points}}</p>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mobile-width">
           <p class="m-0"><b>Added on: </b>{{points.created_at | date}}</p>
         </div>
 
-        <div class="col-2">
+        <div class="col-2 mobile-width">
           <button *ngIf="userModel.usertype == 'ADMIN'" (click)="removePoints(points.id!)" type="button" class="btn btn-outline-danger"><i class="bi bi-dash-circle"></i></button>
         </div>
       </div>

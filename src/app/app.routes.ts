@@ -10,12 +10,14 @@ import { RegisterAdminComponent } from './components/register-admin/register-adm
 import { ListAdminUsersComponent } from './components/list-admin-users/list-admin-users.component';
 import { EditAdminUserComponent } from './components/edit-admin-user/edit-admin-user.component';
 import { ForgotpComponent } from './components/forgotp/forgotp.component';
+import { PasschangeComponent } from './components/passchange/passchange.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'registration', component: RegistrationLoginComponent},
     {path: 'login', component: RegistrationLoginComponent},
     {path: 'recoverpassword', component: ForgotpComponent},
+    {path: 'passchange/:token', component: PasschangeComponent},
     {path: 'points', component: AdminContractsComponent},
     {path: 'newcontract', component: FormContractsComponent},
     {path: 'scores', component: GlobalTableComponent },

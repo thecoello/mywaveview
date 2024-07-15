@@ -3,6 +3,7 @@ import { ContractService } from '../../services/contract';
 import PointsTable from '../../models/pointstable';
 import { NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-region-table',
@@ -11,24 +12,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './region-table.component.html',
   styleUrl: './region-table.component.scss'
 })
-export class RegionTableComponent implements OnInit{
+export class RegionTableComponent implements OnInit {
 
-  pointsModel?:Array<PointsTable>
-  @Input('urlParam')urlParam?: string
+  pointsModel?: Array<PointsTable>
+  @Input('urlParam') urlParam?: string
 
-  constructor(private contractService: ContractService) {
-   }
+  constructor(private contractService: ContractService, private router: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
-    const localSid = localStorage.getItem('user_id')
-    if(this.urlParam?.includes('getallpointsregion')){
-      this.getPoints(`http://127.0.0.1:8000/api/${this.urlParam}`)
-    }else{
-      if (this.urlParam) {
-        this.getPoints(`http://127.0.0.1:8000/api/getpoints/${this.urlParam}`)
-      }else if (localSid) {
-        this.getPoints(`http://127.0.0.1:8000/api/getpoints/${localSid}`)
-      } 
+
+    const id = this.router.snapshot.paramMap.get('id')
+    const localId = localStorage.getItem('user_id')
+
+    if (id) {
+      this.getPoints(`${environment.apiUrl}/getpoints/${id}`)
+    }
+
+    if(localId && !id){
+      this.getPoints(`${environment.apiUrl}/getpoints/${localId}`)
+    }
+
+    if (this.urlParam?.includes('getallpoints')) {
+      this.getPoints(`${environment.apiUrl}/${this.urlParam}`)
+    }
+
+    if (this.urlParam?.includes('region')) {
+      this.getPoints(`${environment.apiUrl}/${this.urlParam}`)
     }
   }
 

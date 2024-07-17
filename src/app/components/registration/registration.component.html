@@ -55,6 +55,15 @@
             [(ngModel)]="registrationModel!.passwordrepeat" required>
     </div>
 
+    <div class="mb-2">
+        <input type="checkbox"  class="form-check-input"  id="terms" name="terms"
+            [(ngModel)]="registrationModel!.terms" required>
+            <label class="form-check-label" for="flexCheckDefault">
+                &nbsp; You agree to the <a href="./assets/images/termsandconditions.pdf" target="_blank" rel="noopener noreferrer">terms and conditions</a> by checking this box.
+              </label>
+    </div>
+
+
     <div *ngIf="passwordValidated" class="alert alert-danger" role="alert">
         Passwords should be the same
     </div>

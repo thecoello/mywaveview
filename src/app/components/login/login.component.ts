@@ -30,8 +30,12 @@ export class LoginComponent {
       this.userService.login(this.loginModel).subscribe({
         next: (response) =>{
           localStorage.setItem('token',response.token)
-          localStorage.setItem('user_id',response.user_id)
-          window.location.reload()
+          localStorage.setItem('userid',response.user_id)
+
+          if(localStorage.getItem('token') && localStorage.getItem('userid')){
+            window.location.reload()
+          }
+          
         },
         error: (error) => {
           this.errorMessage!.push(error.error)

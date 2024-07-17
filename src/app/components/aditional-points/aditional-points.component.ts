@@ -23,7 +23,7 @@ export class AditionalPointsComponent implements OnInit {
   pagination?: Array<any>
   wasValidated: boolean = false
   validator: ValidatorForm = new ValidatorForm()
-  loading: boolean = false
+  loading: boolean = true
   urlPoints: string = environment.apiUrl + "/points"
   userModel: User = new User()
 
@@ -31,7 +31,7 @@ export class AditionalPointsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!
-    const localSid = localStorage.getItem('user_id')!
+    const localSid = localStorage.getItem('userid')!
 
     if (id) {
       this.getAditionalPoints(id)
@@ -60,6 +60,7 @@ export class AditionalPointsComponent implements OnInit {
         if (response) {
           this.aditionaPModelArr! = response.data
           this.pagination = response.links
+          this.loading = false
         }
       },
       error: (error) => {
@@ -76,6 +77,7 @@ export class AditionalPointsComponent implements OnInit {
 
   removePoints(id: string) {
     const btnConfirm = confirm("Confirm that you want to remove these points")
+    this.loading = true
 
     if (btnConfirm) {
       this.loading = true;
@@ -83,7 +85,6 @@ export class AditionalPointsComponent implements OnInit {
         next: (response) => {
           setTimeout(() => {
             window.location.reload()
-            this.loading = false;
           }, 1500);
         },
         error: (error) => {

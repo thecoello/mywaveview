@@ -26,7 +26,7 @@ export class RegisterAdminComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
-    const localSid = localStorage.getItem('user_id')
+    const localSid = localStorage.getItem('userid')
     this.getUser(localSid!)
   }
 

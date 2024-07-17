@@ -1,4 +1,13 @@
-<table class="table table-striped-columns table-striped-columns">
+<div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+  <div class="spinner-grow text-secondary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<p *ngIf="!loading" style="font-size: 0.7rem; text-align: center;"><b>IP:</b> Internal promo | <b>NNS:</b> Net New Sale | <b>EXS:</b> Existing Customer Sale | <b>MIW:</b> Most Innovative Wave
+    </p>
+
+<table *ngIf="!loading" class="table table-striped-columns table-striped-columns">
   <thead>
     <tr class="text-center">
       <th scope="col"><b>#</b></th>
@@ -7,15 +16,15 @@
       <th scope="col">IP</th>
       <th scope="col">NNS</th>
       <th scope="col">EXS</th>
-      <th scope="col">AP</th>
+      <th scope="col">MIW</th>
       <th scope="col"><b>Total</b></th>
     </tr>
   </thead>
 
   <tbody *ngFor="let infoPoints of pointsModel; index as i">
-    <tr *ngIf="infoPoints.total! > 0" class="text-center">
+    <tr class="text-center">
       <td>{{i+1}}</td>
-      <td>{{infoPoints.companyname}}</td>
+      <td class="text-truncate" style="max-width: 85px;">{{infoPoints.companyname}}</td>
       <td class="m-0 p-0"><b class="text-white d-block w-100 p-2
       {{infoPoints.region == 'NA'? 'na-bg' : null}}
       {{infoPoints.region == 'LAC'? 'lac-bg' : null}}
@@ -31,3 +40,9 @@
   </tbody>
 
 </table>
+
+<div *ngIf="pointsModel?.length == 0 && !loading" class="row w-100">
+  <div class="col-12">
+    <p class="text-center">Nothing to show yet</p>
+  </div>
+</div>

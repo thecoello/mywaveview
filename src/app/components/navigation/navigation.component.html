@@ -22,12 +22,12 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="scores?region=NA">NORTH AMERICA</a>
-                                        <a class="dropdown-item" href="scores?region=LAC">LAC</a>
-                                        <a class="dropdown-item" href="scores?region=EMEA">EMEA</a>
-                                        <a class="dropdown-item" href="scores?region=APJ">APJ</a>
+                                        <a (click)="refreh()" class="dropdown-item" href="#/scores?region=NA">NORTH AMERICA</a>
+                                        <a (click)="refreh()" class="dropdown-item" href="#/scores?region=LAC">LAC</a>
+                                        <a (click)="refreh()" class="dropdown-item" href="#/scores?region=EMEA">EMEA</a>
+                                        <a (click)="refreh()" class="dropdown-item" href="#/scores?region=APJ">APJ</a>
                                         <hr class="m-0 p-0">
-                                        <a class="dropdown-item" href="scores">The Road to the World Series</a>       
+                                        <a (click)="refreh()" class="dropdown-item" href="#/scores?region=GLOBAL">The Road to the World Series</a>           
                                     </li>
                                 </ul>
                             </li>
@@ -37,7 +37,7 @@
                                 <a class="nav-link active" aria-current="page" routerLink="/admin/users">Users</a>
                             </li>
                             <li *ngIf="userModel.usertype == 'USER'" class="nav-item">
-                                <a class="nav-link active " aria-current="page" routerLink="/points">Consult your
+                                <a class="nav-link active " aria-current="page" routerLink="/points">Check your
                                     points</a>
                             </li>
 
@@ -61,7 +61,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li *ngIf="userModel.usertype == 'ADMIN'"><a class="dropdown-item"
-                                            routerLink="/edituser">Edit user</a></li>
+                                            routerLink="/admin/edituseradmin/{{userModel.id}}">Edit user</a></li>
                                     <li *ngIf="userModel.usertype == 'ADMIN'">
                                         <hr>
                                     </li>
@@ -117,12 +117,12 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item" href="scores?region=NA">NORTH AMERICA</a>
-                            <a class="dropdown-item" href="scores?region=LAC">LAC</a>
-                            <a class="dropdown-item" href="scores?region=EMEA">EMEA</a>
-                            <a class="dropdown-item" href="scores?region=APJ">APJ</a>
+                            <a class="dropdown-item" href="#/scores?region=NA">NORTH AMERICA</a>
+                            <a class="dropdown-item" href="#/scores?region=LAC">LAC</a>
+                            <a class="dropdown-item" href="#/scores?region=EMEA">EMEA</a>
+                            <a class="dropdown-item" href="#/scores?region=APJ">APJ</a>
                             <hr class="m-0 p-0">
-                            <a class="dropdown-item" href="scores">The Road to the World Series</a>                            
+                            <a class="dropdown-item" href="#/scores?region=GLOBAL">The Road to the World Series</a>                             
                         </li>
                     </ul>
                 </li>
@@ -132,7 +132,7 @@
             <div class="d-flex flex-column">
                 
                 <li *ngIf="userModel.usertype == 'USER'" class="nav-item">
-                    <a class="nav-link active " aria-current="page" routerLink="/points">Consult your points</a>
+                    <a class="nav-link active " aria-current="page" routerLink="/points">Check your points</a>
                 </li>
 
             </div>
@@ -148,6 +148,23 @@
 </div>
 
 <div id="navbarmobile">
+
+    <div class="row ps-2 pe-2 pt-2 pb-2">
+        <div class="col-2">
+            <img src="./assets/images/SBO-logo.png" alt="Logo SAP BUSINESS ONE"
+            class="d-inline-block align-text-top logos">
+        </div>
+        <div class="col-6">     
+            
+        </div>
+     
+        <div class="col-2">
+            <img src="./assets/images/mywave-logo.png" alt="Logo SAP BUSINESS ONE"
+            class="d-inline-block align-text-top logos">
+        </div>
+        
+    </div>
+
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid d-flex w-100">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

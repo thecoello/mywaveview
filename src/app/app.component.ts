@@ -11,6 +11,6 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 })
 export class AppComponent {
 
-  title = 'GenAI Surfing Regional Series';
+  title = 'Be Water Competition';
 
 }

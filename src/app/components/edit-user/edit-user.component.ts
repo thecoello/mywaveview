@@ -28,7 +28,7 @@ export class EditUserComponent implements OnInit {
   constructor(private userService: UserService, private router: Router){}
 
   ngOnInit(): void {
-    const localSid = localStorage.getItem('user_id')
+    const localSid = localStorage.getItem('userid')
     if (this.urlParam) {
       this.getUser(this.urlParam)
     } else if (localSid) {
@@ -56,7 +56,7 @@ export class EditUserComponent implements OnInit {
         next: (response) =>{
           this.registered = true
           setTimeout(() => {
-            window.location.reload()
+          window.location.reload()
           }, 1500);
         },
         error: (error) => {

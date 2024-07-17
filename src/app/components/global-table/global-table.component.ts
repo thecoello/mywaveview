@@ -13,15 +13,14 @@ import { NgIf } from '@angular/common';
 export class GlobalTableComponent implements OnInit {
 
   url: string = "getallpoints"
-  region: string = this.route.snapshot.queryParams['region']
+  region?: string = this.route.snapshot.queryParams['region']
   
 
   constructor(private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
-
-    this.setParam(this.region)
+    this.setParam(this.region!)
   }
 
   setParam(region: string) {

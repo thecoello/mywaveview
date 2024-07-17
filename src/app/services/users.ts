@@ -12,7 +12,7 @@ export class UserService {
   headers:any = {
     'Authorization' : localStorage.getItem('token'),
     'Accept' : 'application/json',
-    'user_id' : localStorage.getItem('user_id')
+    'userid' : localStorage.getItem('userid')
   }
   constructor(private http: HttpClient) { }
 

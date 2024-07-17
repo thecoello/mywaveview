@@ -15,20 +15,19 @@ import { environment } from '../../../environments/environment';
   styleUrl: './list-contracts.component.scss'
 })
 export class ListContractsComponent implements OnInit {
-
   contracts?:Array<Contract>
   errorMessage?:Array<string>
-  loading: boolean = false
+  loading: boolean = true
   pagination?:Array<any>
   urlContracts:string = environment.apiUrl + "/contracts"
   urlUsers:string = "users"
   @Input('urlParam')urlParam?: string
-  enviromentApiUrl:string = environment.apiUrl
+  enviromentApiUrl:string = environment.publicUrl
 
   constructor(private contractService: ContractService){}
 
   ngOnInit(): void {
-    const localSid = localStorage.getItem('user_id')
+    const localSid = localStorage.getItem('userid')
     if (this.urlParam) {
       this.getContracts(this.urlParam)
     } else if (localSid) {
@@ -65,6 +64,7 @@ export class ListContractsComponent implements OnInit {
         if(response){
           this.contracts! = response.data
           this.pagination = response.links
+          this.loading = false
         }
       },
       error: (error) => {

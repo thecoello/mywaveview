@@ -11,12 +11,12 @@ export class AditionalPointsService {
   headers:any = {
     'Authorization' : localStorage.getItem('token'),
     'Accept' : 'application/json',
-    'user_id' : localStorage.getItem('user_id')
+    'userid' : localStorage.getItem('userid')
   }
   constructor(private http: HttpClient) { }
 
   createAddPoints(body: AditionalPointsModel):Observable<AditionalPointsModel>{
-    let headers = {'Content-Type': 'application/json', 'Authorization': this.headers.Authorization, 'Accept' : this.headers.Accept,  'user_id': this.headers.user_id}
+    let headers = {'Content-Type': 'application/json', 'Authorization': this.headers.Authorization, 'Accept' : this.headers.Accept,  'userid': this.headers.userid}
     return this.http.post(`${this.url}/point`,body,{headers: headers})
   }
 

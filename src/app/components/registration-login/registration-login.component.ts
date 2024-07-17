@@ -23,7 +23,7 @@ export class RegistrationLoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('user_id') && localStorage.getItem('token')){
+    if(localStorage.getItem('userid') && localStorage.getItem('token')){
       this.router.navigate(['/'])
     }
     

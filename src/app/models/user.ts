@@ -8,4 +8,5 @@ export default class User {
     password?:string
     passwordrepeat?:string
     usertype?:string
+    terms?:boolean
 }

@@ -1,7 +1,14 @@
-<div class="row mobile-row">
+<div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+  <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="!loading" class="row mobile-row">
   <div class="col-3 mobile-width mobile-width"></div>
   <div class="col-6 p-2 mt-4 mobile-width">
     <h3>Admin Users</h3>
+
 
     <div *ngFor="let user of users">
 
@@ -24,6 +31,12 @@
         </div>
       </div>
 
+    </div>
+
+    <div *ngIf="users?.length == 0" class="row w-100">
+      <div class="col-12">
+        <p class="text-center">Nothing to show yet</p>
+      </div>
     </div>
 
     <nav class="mt-4">

@@ -18,7 +18,7 @@ export class NavigationComponent implements OnInit{
 
   ngOnInit(): void {
     this.userModel = new User()
-    const id = localStorage.getItem('user_id')
+    const id = localStorage.getItem('userid')
 
     if(id){
       this.userService.getUser(id!).subscribe({
@@ -26,9 +26,12 @@ export class NavigationComponent implements OnInit{
           this.userModel = response
         },
         error:(error)=>{
-          this.userModel = new User()
+          console.log(error)
+          if(error){
+            this.userModel = new User()
             localStorage.clear()
-            this.router.navigateByUrl('/')
+            this.router.navigateByUrl('/') 
+          }
         }
       })
     }
@@ -51,6 +54,12 @@ export class NavigationComponent implements OnInit{
         }
       })     
     }
+  }
+
+  refreh(){
+    setTimeout(() => {
+      window.location.reload()
+    }, 500);
   }
 
 

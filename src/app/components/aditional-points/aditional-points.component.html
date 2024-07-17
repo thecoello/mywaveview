@@ -1,25 +1,41 @@
 
 <app-form-aditional-points *ngIf="userModel.usertype == 'ADMIN'"></app-form-aditional-points>
 
-<div *ngFor="let points of aditionaPModelArr">
-  <div class="card mt-0 mb-0 border-0">
-    <div class="card-body">
-      <div class="row d-flex align-items-center mobile-row ">
-        <div class="col-4 mobile-width">
-          <p class="m-0"><b>Points: </b>{{points.points}}</p>
-        </div>
+<div *ngIf="loading" class="d-flex align-item-center justify-content-center mt-4 mb-4">
+  <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
 
-        <div class="col-6 mobile-width">
-          <p class="m-0"><b>Added on: </b>{{points.created_at | date}}</p>
-        </div>
-
-        <div class="col-2 mobile-width">
-          <button *ngIf="userModel.usertype == 'ADMIN'" (click)="removePoints(points.id!)" type="button" class="btn btn-outline-danger"><i class="bi bi-dash-circle"></i></button>
+<div *ngIf="!loading">
+  <div  *ngFor="let points of aditionaPModelArr">
+    <div class="card mt-0 mb-0 border-0">
+      <div class="card-body">
+        <div class="row d-flex align-items-center mobile-row ">
+          <div class="col-4 mobile-width">
+            <p class="m-0"><b>Points: </b>{{points.points}}</p>
+          </div>
+  
+          <div class="col-6 mobile-width">
+            <p class="m-0"><b>Added on: </b>{{points.created_at | date}}</p>
+          </div>
+  
+          <div class="col-2 mobile-width">
+            <button *ngIf="userModel.usertype == 'ADMIN'" (click)="removePoints(points.id!)" type="button" class="btn btn-outline-danger"><i class="bi bi-dash-circle"></i></button>
+          </div>
         </div>
       </div>
     </div>
+    <hr class="m-0 p-0">
+  
   </div>
-  <hr class="m-0 p-0">
+
+
+<div *ngIf="aditionaPModelArr?.length == 0" class="row w-100">
+  <div class="col-12 mt-4">
+    <p class="text-center">Nothing to show yet</p>
+  </div>
+</div>
 
 </div>
 

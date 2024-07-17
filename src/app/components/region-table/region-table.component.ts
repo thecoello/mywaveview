@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
   styleUrl: './region-table.component.scss'
 })
 export class RegionTableComponent implements OnInit {
-
+  loading:boolean = true
   pointsModel?: Array<PointsTable>
   @Input('urlParam') urlParam?: string
 
@@ -23,29 +23,29 @@ export class RegionTableComponent implements OnInit {
   ngOnInit(): void {
 
     const id = this.router.snapshot.paramMap.get('id')
-    const localId = localStorage.getItem('user_id')
-
-    if (id) {
-      this.getPoints(`${environment.apiUrl}/getpoints/${id}`)
-    }
-
-    if(localId && !id){
-      this.getPoints(`${environment.apiUrl}/getpoints/${localId}`)
-    }
-
-    if (this.urlParam?.includes('getallpoints')) {
-      this.getPoints(`${environment.apiUrl}/${this.urlParam}`)
-    }
+    const localId = localStorage.getItem('userid')
 
     if (this.urlParam?.includes('region')) {
       this.getPoints(`${environment.apiUrl}/${this.urlParam}`)
-    }
+    }else if (this.urlParam?.includes('getallpoints')) {
+      this.getPoints(`${environment.apiUrl}/${this.urlParam}`)
+    } else{
+      if (id) {
+        this.getPoints(`${environment.apiUrl}/getpoints/${id}`)
+      }else if(localId && !id){
+        this.getPoints(`${environment.apiUrl}/getpoints/${localId}`)
+      }
+    } 
+   
   }
 
   getPoints(url: string) {
     this.contractService.getPoints(url).subscribe({
-      next: (response) => {
+      next: (response) => {      
         this.pointsModel = response
+        setTimeout(() => {
+          this.loading = false
+        }, 500);
       }
     })
   }

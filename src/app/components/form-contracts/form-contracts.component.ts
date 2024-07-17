@@ -27,7 +27,7 @@ export class FormContractsComponent implements OnInit {
   constructor(private contractservice: ContractService, private router: Router) { }
 
   ngOnInit(): void {
-    this.contractModel.user_id = parseInt(localStorage.getItem('user_id')!)
+    this.contractModel.user_id = parseInt(localStorage.getItem('userid')!)
   }
 
   private submit(contract: FormData) {

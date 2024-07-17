@@ -28,7 +28,7 @@ export class AdminContractsComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id')!
-    const localSid = localStorage.getItem('user_id')
+    const localSid = localStorage.getItem('userid')
 
     if (id) {
       this.urlParam = id
